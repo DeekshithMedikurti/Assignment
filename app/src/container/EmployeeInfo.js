@@ -56,8 +56,8 @@ export class EmployeeInfo extends Component {
             formData.append('email', this.state.email);
             formData.append('phone', this.state.phone);
             formData.append('location', this.state.location);
-            formData.append('joiningDate', this.state.joiningDate);
-            formData.append('lastDate', this.state.lastDate);
+            formData.append('joiningDate', this.state.joiningDate.toISOString());
+            formData.append('lastDate', this.state.lastDate.toISOString().substr(0,10));
             axios.post('http://localhost:5000/enroll/employee', JSON.stringify(Object.fromEntries(formData)), { headers: { 'Content-Type': 'application/json' } }).then(res => {
                 if (res) {
                     this.setState({ loading: false })
